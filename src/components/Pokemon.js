@@ -4,7 +4,13 @@ import React, { Component } from 'react';
 
 import { StyleSheet } from 'react-native';
 
-import { Viro3DObject, ViroAmbientLight, ViroARPlane } from 'react-viro';
+import {
+  Viro3DObject,
+  ViroAmbientLight,
+  ViroARPlane,
+  ViroMaterials,
+  ViroQuad,
+} from 'react-viro';
 
 export default class Pokemon extends Component {
   constructor() {
@@ -34,6 +40,20 @@ export default class Pokemon extends Component {
         }}
       >
         <ViroAmbientLight color="#FFFFFF" />
+        <ViroQuad
+          position={[
+            this.state.planeCoords.x,
+            this.state.planeCoords.y,
+            this.state.planeCoords.z,
+          ]}
+          height={20}
+          width={10}
+          rotation={[-90, 0, 0]}
+          physicsBody={{
+            type: 'Static',
+          }}
+          materials={['ground']}
+        />
         <Viro3DObject
           source={require('PokeBAM/src/assets/3D/Pokemons/Squirtle/Squirtle.vrx')}
           resources={[
@@ -45,7 +65,11 @@ export default class Pokemon extends Component {
             require('PokeBAM/src/assets/3D/Pokemons/Squirtle/pm0007_00_Eye2.png'),
             require('PokeBAM/src/assets/3D/Pokemons/Squirtle/pm0007_00_EyeNor.png'),
           ]}
-          position={[this.state.planeCoords.x, this.state.planeCoords.y, this.state.planeCoords.z]}
+          position={[
+            this.state.planeCoords.x,
+            this.state.planeCoords.y,
+            this.state.planeCoords.z,
+          ]}
           rotation={[-90, 0, 0]}
           dragType="FixedToWorld"
           scale={[0.015, 0.015, 0.015]}
@@ -55,5 +79,11 @@ export default class Pokemon extends Component {
     );
   }
 }
+
+ViroMaterials.createMaterials({
+  ground: {
+    diffuseColor: 'transparent',
+  },
+});
 
 module.exports = Pokemon;
