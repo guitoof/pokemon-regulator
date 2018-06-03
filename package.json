@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "prestart": "./node_modules/react-viro/bin/run_ngrok.sh",
     "test": "jest"
   },
   "dependencies": {
