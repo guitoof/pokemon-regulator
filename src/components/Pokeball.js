@@ -34,7 +34,7 @@ export default class Pokeball extends Component {
           position={[0, 0, -0.1]}
           rotation={[0, -90, 0]}
           ref={pokeball => (this.pokeball = pokeball)}
-          scale={[0.00008, 0.00008, 0.00008]}
+          scale={[0.0001, 0.0001, 0.0001]}
           type="OBJ"
           dragType="FixedDistance"
           physicsBody={{
@@ -43,11 +43,10 @@ export default class Pokeball extends Component {
             useGravity: !this.state.shouldHoldPokeball,
             restitution: 0.5
           }}
-          onDrag={event => {
-            if (this.state.shouldHoldPokeball) {
-              this.pokeball.applyImpulse([0, 0, -10]);
-              this.setState({ shouldHoldPokeball: false });
-            }
+          onDrag={() => {}}
+          onClick={() => {
+            this.pokeball.applyImpulse([0, 1, -1]);
+            this.setState({ shouldHoldPokeball: false });
           }}
         />
       </ViroNode>
