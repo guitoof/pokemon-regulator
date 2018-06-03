@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 import {
   ViroNode,
   Viro3DObject,
   ViroAmbientLight,
   ViroSpotLight
-} from "react-viro";
+} from 'react-viro';
 
 export default class Pokeball extends Component {
   render() {
@@ -23,7 +23,7 @@ export default class Pokeball extends Component {
           castsShadow={true}
         />
         <Viro3DObject
-          source={require("PokeBAM/src/assets/3D/Pokeballs/Regular/pokeball.obj")}
+          source={require('PokeBAM/src/assets/3D/Pokeballs/Regular/pokeball.obj')}
           position={[0, 0, -0.2]}
           rotation={[0, -90, 0]}
           scale={[0.0005, 0.0005, 0.0005]}
