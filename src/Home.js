@@ -14,7 +14,7 @@ export default class HelloWorldSceneAR extends Component {
 
     // Set initial state here
     this.state = {
-      text: 'Initializing AR...',
+      text: 'Starting PokeBAM...',
     };
 
     // bind 'this' to functions
@@ -24,6 +24,14 @@ export default class HelloWorldSceneAR extends Component {
   render() {
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized}>
+        {this.state.text && (
+          <ViroText
+            text={this.state.text}
+            scale={[0.5, 0.5, 0.5]}
+            position={[0, 0, -1]}
+            style={styles.textStyle}
+          />
+        )}
         <Pokemon />
       </ViroARScene>
     );
@@ -32,7 +40,7 @@ export default class HelloWorldSceneAR extends Component {
   _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
       this.setState({
-        text: 'Hello World!',
+        text: null,
       });
     } else if (state == ViroConstants.TRACKING_NONE) {
       // Handle loss of tracking
