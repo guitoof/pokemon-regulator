@@ -1,12 +1,13 @@
-'use strict';
+"use strict";
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { ViroARScene, ViroText, ViroConstants } from 'react-viro';
+import { ViroARScene, ViroText, ViroConstants } from "react-viro";
 
-import Pokemon from './components/Pokemon';
+import Pokemon from "./components/Pokemon";
+import Pokeball from "./components/Pokeball";
 
 export default class HelloWorldSceneAR extends Component {
   constructor() {
@@ -14,7 +15,7 @@ export default class HelloWorldSceneAR extends Component {
 
     // Set initial state here
     this.state = {
-      text: 'Starting PokeBAM...',
+      text: "Starting PokeBAM..."
     };
 
     // bind 'this' to functions
@@ -33,6 +34,7 @@ export default class HelloWorldSceneAR extends Component {
           />
         )}
         <Pokemon />
+        <Pokeball />
       </ViroARScene>
     );
   }
@@ -40,7 +42,7 @@ export default class HelloWorldSceneAR extends Component {
   _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
       this.setState({
-        text: null,
+        text: null
       });
     } else if (state == ViroConstants.TRACKING_NONE) {
       // Handle loss of tracking
@@ -50,12 +52,12 @@ export default class HelloWorldSceneAR extends Component {
 
 var styles = StyleSheet.create({
   helloWorldTextStyle: {
-    fontFamily: 'Arial',
+    fontFamily: "Arial",
     fontSize: 30,
-    color: '#ffffff',
-    textAlignVertical: 'center',
-    textAlign: 'center',
-  },
+    color: "#ffffff",
+    textAlignVertical: "center",
+    textAlign: "center"
+  }
 });
 
 module.exports = HelloWorldSceneAR;
