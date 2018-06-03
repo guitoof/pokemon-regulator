@@ -7,11 +7,11 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import { ViroARSceneNavigator } from "react-viro";
+import { ViroARSceneNavigator } from 'react-viro';
 
-import { VIRO_API_KEY } from "./environment.secret";
+import { VIRO_API_KEY } from './environment.secret';
 
 /*
  TODO: Insert your API key below
@@ -21,7 +21,7 @@ var sharedProps = {
 };
 
 // Sets the default scene you want for AR
-var InitialARScene = require("./src/Home");
+var InitialARScene = require('./src/Home');
 
 export default class ViroSample extends Component {
   constructor() {

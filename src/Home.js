@@ -7,14 +7,15 @@ import { StyleSheet } from 'react-native';
 import { ViroARScene, ViroText, ViroConstants } from 'react-viro';
 
 import Pokemon from './components/Pokemon';
+import Pokeball from './components/Pokeball';
 
-export default class HelloWorldSceneAR extends Component {
+export default class Home extends Component {
   constructor() {
     super();
 
     // Set initial state here
     this.state = {
-      text: 'Starting PokeBAM...',
+      text: 'Starting PokeBAM...'
     };
 
     // bind 'this' to functions
@@ -33,6 +34,7 @@ export default class HelloWorldSceneAR extends Component {
           />
         )}
         <Pokemon />
+        <Pokeball />
       </ViroARScene>
     );
   }
@@ -40,7 +42,7 @@ export default class HelloWorldSceneAR extends Component {
   _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
       this.setState({
-        text: null,
+        text: null
       });
     } else if (state == ViroConstants.TRACKING_NONE) {
       // Handle loss of tracking
@@ -54,8 +56,8 @@ var styles = StyleSheet.create({
     fontSize: 30,
     color: '#ffffff',
     textAlignVertical: 'center',
-    textAlign: 'center',
-  },
+    textAlign: 'center'
+  }
 });
 
-module.exports = HelloWorldSceneAR;
+module.exports = Home;
