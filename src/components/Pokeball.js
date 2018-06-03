@@ -10,6 +10,13 @@ import {
 } from 'react-viro';
 
 export default class Pokeball extends Component {
+  constructor() {
+    super();
+    this.state = {
+      shouldHoldPokeball: true
+    };
+    this.pokeball = null;
+  }
   render() {
     return (
       <ViroNode>
@@ -24,11 +31,23 @@ export default class Pokeball extends Component {
         />
         <Viro3DObject
           source={require('PokeBAM/src/assets/3D/Pokeballs/Regular/pokeball.obj')}
-          position={[0, 0, -0.2]}
+          position={[0, 0, -0.1]}
           rotation={[0, -90, 0]}
-          scale={[0.0005, 0.0005, 0.0005]}
-          dragType="FixedDistance"
+          ref={pokeball => (this.pokeball = pokeball)}
+          scale={[0.0001, 0.0001, 0.0001]}
           type="OBJ"
+          dragType="FixedDistance"
+          physicsBody={{
+            type: 'Dynamic',
+            mass: 1,
+            useGravity: !this.state.shouldHoldPokeball,
+            restitution: 0.5
+          }}
+          onDrag={() => {}}
+          onClick={() => {
+            this.pokeball.applyImpulse([0, 1, -1]);
+            this.setState({ shouldHoldPokeball: false });
+          }}
         />
       </ViroNode>
     );
